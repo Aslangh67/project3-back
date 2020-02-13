@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "password",
-    "database": "tradejack_db",
+    "database": "food_savers",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
