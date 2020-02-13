@@ -3,8 +3,8 @@ module.exports = function(sequelize, DataTypes) {
       title:{ type: DataTypes.STRING, allowNull: false},
       quantity:{ type: DataTypes.INTEGER, allowNull: false},
       unit:{ type: DataTypes.STRING, allowNull: false},
-      value_unit:{ type: DataTypes.INTEGER, allowNull: false},
-      exp_date:{ type: DataTypes.DATE, allowNull: false},
+      value_unit:{ type: DataTypes.DECIMAL(10,2), allowNull: false},
+      exp_date:{ type: DataTypes.DATE}
     });
     Inventory.associate = function(models) {
         Inventory.belongsTo(models.Location, {

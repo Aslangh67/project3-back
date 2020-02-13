@@ -4,9 +4,8 @@ module.exports = function(sequelize, DataTypes) {
       city:{ type: DataTypes.STRING, allowNull: false},
       state:{ type: DataTypes.STRING, allowNull: false},
       zip:{ type: DataTypes.INTEGER, allowNull: false},
-      ein: { type: DataTypes.INTEGER, allowNull: false},
-      latitude: { type: DataTypes.INTEGER, allowNull: false},
-      longitude: { type: DataTypes.INTEGER, allowNull: false},
+      latitude: { type: DataTypes.INTEGER},
+      longitude: { type: DataTypes.INTEGER},
     });
     Location.associate = function(models) {
         Location.belongsTo(models.Company_profile, {
