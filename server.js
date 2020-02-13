@@ -32,14 +32,12 @@ app.use(compression());
 
 // Routes
 // =============================================================
-var allRoutes = require('./controllers/index');
-
+const allRoutes = require('./controllers/routes');
 
 // KEEP for Bcrypt initializing sessions on our server, basically boilerplate
 // app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true, cookie: { maxAge: 7200000 } }));
 
 app.use('/', allRoutes);
-
 
 
 // Syncing our sequelize models and then starting our Express app
