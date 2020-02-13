@@ -1,13 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     var Company_profile = sequelize.define("Company_profile", {
       company_name:{ type: DataTypes.STRING, allowNull: false},
-      main_address:{ type: DataTypes.STRING, allowNull: false},
       ein: { type: DataTypes.INTEGER, allowNull: false},
       account_type:{ type: DataTypes.BOOLEAN, defaultValue:false},
     });
   
     Company_profile.associate = function(models) {
-      Company_profile.hasMany(models.Locations, {
+      Company_profile.hasMany(models.Location, {
         onDelete: "cascade"
       });
       Company_profile.hasMany(models.User_profile, {
