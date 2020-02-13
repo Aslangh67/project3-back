@@ -1,4 +1,5 @@
 // npm packages
+const express = require("express");
 const router = express.Router();
 
 // required files
@@ -8,9 +9,10 @@ const donationRoutes = require('./donation');
 const locationRoutes = require('./location');
 const scheduleRoutes = require('./schedule');
 const userRoutes = require('./userProfile');
+const companyRoutes = require('./companyProfile');
 
 // Routes
-router.route('/auth', authRoutes);
+// router.route('/auth', authRoutes);
 
 // User Routes
 router.route('/api/user/').get(userRoutes.getUsers);
@@ -51,6 +53,14 @@ router.route('/api/donation/:id')
   .get(donationRoutes.getSingleDonation)
   .put(donationRoutes.editDonation)
   .delete(donationRoutes.deleteDonation)
+
+// donation Routes
+router.route('/api/company/').get(companyRoutes.getCompany);
+router.route('/api/company/new').post(companyRoutes.newCompany);
+router.route('/api/company/:id')
+  .get(companyRoutes.getSingleCompany)
+  .put(companyRoutes.editCompany)
+  .delete(companyRoutes.deleteCompany)
 
 
 
