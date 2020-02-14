@@ -37,21 +37,21 @@ db.Company_profile.bulkCreate([
             city:"Bellevue",
             state:"WA",
             zip:98006 ,
-            Company_profileId: 1
+            CompanyProfileId: 1
         },
         {
             address: "1700 E Madison St",
             city:" Seattle",
             state:"WA",
             zip:98122 ,
-            Company_profileId: 2
+            CompanyProfileId: 2
         },
         {
             address: "915 NW 45th St",
             city:"Seattle",
             state:"WA",
             zip:98107 ,
-            Company_profileId: 3
+            CompanyProfileId: 3
         },
     
     ])
@@ -67,7 +67,7 @@ db.Company_profile.bulkCreate([
                     last_name:"doe",
                     email:"john@fake.com",
                     admin:true ,
-                    Company_profileId: 1
+                    CompanyProfileId: 1
                 },
                 {
                     username: "user2",
@@ -76,7 +76,7 @@ db.Company_profile.bulkCreate([
                     last_name:"doe",
                     email:"john@fake.com",
                     admin:true ,
-                    Company_profileId: 2
+                    CompanyProfileId: 2
                 },
                 {
                     username: "user3",
@@ -85,7 +85,7 @@ db.Company_profile.bulkCreate([
                     last_name:"doe",
                     email:"john@fake.com",
                     admin:true ,
-                    Company_profileId: 3
+                    CompanyProfileId: 3
                 },
                 {
                     username: "user4",
@@ -94,7 +94,7 @@ db.Company_profile.bulkCreate([
                     last_name:"doe",
                     email:"jane@fake.com",
                     admin:true ,
-                    Company_profileId: 4
+                    CompanyProfileId: 4
                 },
                 {
                     username: "user5",
@@ -103,7 +103,7 @@ db.Company_profile.bulkCreate([
                     last_name:"doe",
                     email:"jane@fake.com",
                     admin:true ,
-                    Company_profileId: 5
+                    CompanyProfileId: 5
                 }
             
             ])
