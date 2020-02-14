@@ -10,8 +10,8 @@ module.exports = {
   newSchedule: function (req, res) {
     db.Pickup_schedule.create({
       date: req.body.date,
-      Company_profile_id: req.body.Company_profile_id,
-      Location_id: req.body.Location_id
+      CompanyProfileId: req.body.CompanyProfileId,
+      LocationId: req.body.LocationId,
     })
       .then(function (data) {
         // return data
@@ -50,12 +50,11 @@ module.exports = {
   editSchedule: function (req, res) {
     db.Pickup_schedule.update(
       req.body, {
+      date: req.body.date,
+      CompanyProfileId: req.body.CompanyProfileId,
+      LocationId: req.body.LocationId,
       where: {
-        id: req.body.id,
-        // I'm not sure about these
-        date: req.body.date,
-        Company_profile_id: req.body.Company_profile_id,
-        Location_id: req.body.Location_id
+        id: req.params.id,
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);

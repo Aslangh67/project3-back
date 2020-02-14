@@ -14,6 +14,7 @@ module.exports = {
       unit: req.body.unit,
       value_unit: req.body.value_unit,
       exp_date: req.body.exp_date,
+      LocationId: req.body.LocationId
     })
       .then(function (data) {
         // return data
@@ -52,14 +53,14 @@ module.exports = {
   editInventory: function (req, res) {
     db.Inventory.update(
       req.body, {
-      where: {
-        id: req.body.id,
-        // I'm not sure about these
         title: req.body.title,
-        quantity: req.body.quantity,
-        unit: req.body.unit,
-        value_unit: req.body.value_unit,
-        exp_date: req.body.exp_date,
+      quantity: req.body.quantity,
+      unit: req.body.unit,
+      value_unit: req.body.value_unit,
+      exp_date: req.body.exp_date,
+      LocationId: req.body.LocationId,
+      where: {
+        id: req.params.id,
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);
