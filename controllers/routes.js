@@ -15,7 +15,7 @@ const companyRoutes = require('./companyProfile');
 // router.route('/auth', authRoutes);
 
 // User Routes
-router.route('/api/user/').get(userRoutes.getUsers);
+router.route('/api/user').get(userRoutes.getUsers);
 router.route('/api/user/new').post(userRoutes.newUser);
 router.route('/api/user/:id')
   .get(userRoutes.getSingleUser)
@@ -23,7 +23,7 @@ router.route('/api/user/:id')
   .delete(userRoutes.deleteUser)
 
 // Inventory Routes
-router.route('/api/inventory/').get(inventoryRoutes.getInventory);
+router.route('/api/inventory').get(inventoryRoutes.getInventory);
 router.route('/api/inventory/new').post(inventoryRoutes.newInventory);
 router.route('/api/inventory/:id')
   .get(inventoryRoutes.getSingleInventory)
@@ -31,7 +31,7 @@ router.route('/api/inventory/:id')
   .delete(inventoryRoutes.deleteInventory)
 
 // Location Routes
-router.route('/api/location/').get(locationRoutes.getLocations);
+router.route('/api/location').get(locationRoutes.getLocations);
 router.route('/api/location/new').post(locationRoutes.newLocation);
 router.route('/api/location/:id')
   .get(locationRoutes.getSingleLocation)
@@ -39,7 +39,7 @@ router.route('/api/location/:id')
   .delete(locationRoutes.deleteLocation)
 
 // schedule Routes
-router.route('/api/schedule/').get(scheduleRoutes.getSchedule);
+router.route('/api/schedule').get(scheduleRoutes.getSchedule);
 router.route('/api/schedule/new').post(scheduleRoutes.newSchedule);
 router.route('/api/schedule/:id')
   .get(scheduleRoutes.getSingleSchedule)
@@ -47,15 +47,15 @@ router.route('/api/schedule/:id')
   .delete(scheduleRoutes.deleteSchedule)
 
 // donation Routes
-router.route('/api/donation/').get(donationRoutes.getDonations);
+router.route('/api/donation').get(donationRoutes.getDonations);
 router.route('/api/donation/new').post(donationRoutes.newDonation);
 router.route('/api/donation/:id')
   .get(donationRoutes.getSingleDonation)
   .put(donationRoutes.editDonation)
   .delete(donationRoutes.deleteDonation)
 
-// donation Routes
-router.route('/api/company/').get(companyRoutes.getCompany);
+// company Routes
+router.route('/api/company').get(companyRoutes.getCompany);
 router.route('/api/company/new').post(companyRoutes.newCompany);
 router.route('/api/company/:id')
   .get(companyRoutes.getSingleCompany)
