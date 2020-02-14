@@ -16,6 +16,7 @@ module.exports = {
       ein: req.body.ein,
       latitude: req.body.latitude,
       longitude: req.body.longitude,
+      CompanyProfileId: req.body.CompanyProfileId
     })
       .then(function (data) {
         // return data
@@ -54,16 +55,16 @@ module.exports = {
   editLocation: function (req, res) {
     db.Location.update(
       req.body, {
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      ein: req.body.ein,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+      CompanyProfileId: req.body.CompanyProfileId,
       where: {
-        id: req.body.id,
-        // I'm not sure about these
-        address: req.body.address,
-        city: req.body.city,
-        state: req.body.state,
-        zip: req.body.zip,
-        ein: req.body.ein,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
+        id: req.params.id,
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);

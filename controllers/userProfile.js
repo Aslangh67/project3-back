@@ -14,7 +14,8 @@ module.exports = {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
-      admin: req.body.admin
+      admin: req.body.admin,
+      companyProfileId: req.body.companyProfileId
     })
       .then(function (data) {
         // return data
@@ -53,15 +54,15 @@ module.exports = {
   editUser: function (req, res) {
     db.User_profile.update(
       req.body, {
+      username: req.body.username,
+      password: req.body.password,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      admin: req.body.admin,
+      companyProfileId: req.body.companyProfileId,
       where: {
-        id: req.body.id,
-        // I'm not sure about these
-        username: req.body.username,
-        password: req.body.password,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email,
-        admin: req.body.admin
+        id: req.params.id
       }
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);

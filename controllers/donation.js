@@ -9,8 +9,8 @@ module.exports = {
   // api/donation/new
   newDonation: function (req, res) {
     db.Inventory_donated.create({
-      Company_profile_id: req.body.Company_profile_id,
-      Inventory_id: req.body.Inventory_id
+      CompanyProfileId: req.body.CompanyProfileId,
+      InventoryId: req.body.InventoryId
     })
       .then(function (data) {
         // return data
@@ -49,11 +49,10 @@ module.exports = {
   editDonation: function (req, res) {
     db.Inventory_donated.update(
       req.body, {
+        CompanyProfileId: req.body.CompanyProfileId,
+      InventoryId: req.body.InventoryId,
       where: {
-        id: req.body.id,
-        // I'm not sure about these
-        Company_profile_id: req.body.Company_profile_id,
-        Inventory_id: req.body.Inventory_id
+        id: req.params.id
       }
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
