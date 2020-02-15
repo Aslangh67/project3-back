@@ -30,6 +30,7 @@ module.exports = {
       })
   },
 
+
   // Get all user profile
   // api/user/
   getUsers: function (req, res) {
