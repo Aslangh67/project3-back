@@ -3,6 +3,7 @@ const router = require("express").Router();
 
 // required files
 // const authRoutes = require('./authController');
+const authRoutes = require('./authController.js');
 const inventoryRoutes = require('./inventory.js');
 const donationRoutes = require('./donation.js');
 const locationRoutes = require('./location.js');
@@ -12,6 +13,10 @@ const companyRoutes = require('./companyProfile.js');
 
 // Routes
 // router.route('/auth', authRoutes);
+// Auth routes
+router.route('/api/auth/login').post(authRoutes.logIn);
+router.route('/api/auth/logout').get(authRoutes.logOut);
+router.route('/api/auth/readsessions').get(authRoutes.readSessions);
 
 
 // User Routes
@@ -77,7 +82,7 @@ router.route('/api/donation/:id')
 
 
 // company Routes
-router.route('/api/company').get(companyRoutes.getCompany);
+router.route('/api/company').get(companyRoutes.getCompanies);
 router.route('/api/company/new').post(companyRoutes.newCompany);
 router.route('/api/company/:id')
   .get(companyRoutes.getSingleCompany)
