@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 // Import the models to use its database functions.
 const db = require("../models");
+const bcrypt = require('bcryptjs');
 
 module.exports = {
   // Create user profile
@@ -22,6 +23,10 @@ module.exports = {
         res.json(data);
       }).catch(function (err) {
         console.error(err);
+        res.json({
+          success: false,
+          message: error.message
+      })
       })
   },
 
