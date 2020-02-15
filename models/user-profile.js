@@ -1,3 +1,5 @@
+// var bcrypt = require('bcrypt');
+
 module.exports = function(sequelize, DataTypes) {
     var User_profile = sequelize.define("User_profile", {
       username:{ type: DataTypes.STRING, allowNull: false},
@@ -14,5 +16,9 @@ module.exports = function(sequelize, DataTypes) {
           }
         });
       };
+
+      // User_profile.beforeCreate(function(user) {
+      //   user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+      // });
     return User_profile;
   };

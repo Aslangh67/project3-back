@@ -18,7 +18,10 @@ router.route('/api/auth/login').post(authRoutes.logIn);
 router.route('/api/auth/logout').get(authRoutes.logOut);
 router.route('/api/auth/readsessions').get(authRoutes.readSessions);
 
-// User Profile Routes
+
+// User Routes
+router.route('/api/user').get(userRoutes.getUsers);
+
 router.route('/api/user/new').post(userRoutes.newUser);
 router.route('/api/user/').get(userRoutes.getUsers);
 router.route('/api/user/:id')
@@ -35,6 +38,9 @@ router.route('/api/company/:id')
   .delete(companyRoutes.deleteCompany)
 
 // Inventory Routes
+
+router.route('/api/inventory').get(inventoryRoutes.getInventory);
+
 router.route('/api/inventory/new').post(inventoryRoutes.newInventory);
 router.route('/api/inventory/').get(inventoryRoutes.getInventory);
 router.route('/api/inventory/:id')
@@ -43,6 +49,9 @@ router.route('/api/inventory/:id')
   .delete(inventoryRoutes.deleteInventory)
 
 // Location Routes
+
+router.route('/api/location').get(locationRoutes.getLocations);
+
 router.route('/api/location/new').post(locationRoutes.newLocation);
 router.route('/api/location/').get(locationRoutes.getLocations);
 router.route('/api/location/:id')
@@ -51,6 +60,9 @@ router.route('/api/location/:id')
   .delete(locationRoutes.deleteLocation)
 
 // schedule Routes
+
+router.route('/api/schedule').get(scheduleRoutes.getSchedule);
+
 router.route('/api/schedule/new').post(scheduleRoutes.newSchedule);
 router.route('/api/schedule/').get(scheduleRoutes.getSchedule);
 router.route('/api/schedule/:id')
@@ -59,11 +71,26 @@ router.route('/api/schedule/:id')
   .delete(scheduleRoutes.deleteSchedule)
 
 // donation Routes
+router.route('/api/donation').get(donationRoutes.getDonations);
+
 router.route('/api/donation/new').post(donationRoutes.newDonation);
 router.route('/api/donation/').get(donationRoutes.getDonations);
 router.route('/api/donation/:id')
   .get(donationRoutes.getSingleDonation)
   .put(donationRoutes.editDonation)
   .delete(donationRoutes.deleteDonation)
+
+
+// company Routes
+router.route('/api/company').get(companyRoutes.getCompany);
+router.route('/api/company/new').post(companyRoutes.newCompany);
+router.route('/api/company/:id')
+  .get(companyRoutes.getSingleCompany)
+  .put(companyRoutes.editCompany)
+  .delete(companyRoutes.deleteCompany)
+
+
+
+
 
 module.exports = router
