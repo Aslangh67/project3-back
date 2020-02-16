@@ -1,6 +1,6 @@
-const express = require("express");
-// const sequelize, { Op } = require("sequelize")
-const router = express.Router();
+// const express = require("express");
+// // const sequelize, { Op } = require("sequelize")
+// const router = express.Router();
 // Import the models to use its database functions.
 const db = require("../models");
 const bcrypt = require('bcryptjs');
