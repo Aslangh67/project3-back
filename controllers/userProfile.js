@@ -9,6 +9,8 @@ module.exports = {
   // Create user profile
   // api/user/new
   newUser: function (req, res) {
+    console.log(req.body);
+    
     db.User_profile.create({
       username: req.body.username,
       password: req.body.password,
@@ -16,13 +18,14 @@ module.exports = {
       last_name: req.body.last_name,
       email: req.body.email,
       admin: req.body.admin,
-      companyProfileId: req.body.companyProfileId
+      CompanyProfileId: req.body.CompanyProfileId
     })
       .then(function (data) {
         // return data
         res.json(data);
       }).catch(function (err) {
-        console.error(err);
+        if (err) res.status(404).send(err);
+        // console.error(err);
         res.json({
           success: false,
           message: error.message
@@ -40,7 +43,6 @@ module.exports = {
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
     });
-    res.json('task index route!')
   },
 
   // Get specific user profile item
