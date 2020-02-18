@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
     User_profile.associate = function(models) {
         User_profile.belongsTo(models.Company_profile, {
           foreignKey: {
+            // name: "company_id",
             allowNull: false
           }
         });

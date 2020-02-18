@@ -12,11 +12,10 @@ const userRoutes = require('./userProfile.js');
 const companyRoutes = require('./companyProfile.js');
 
 // Routes
-// router.route('/auth', authRoutes);
 // Auth routes
 router.route('/api/auth/login').post(authRoutes.logIn);
 router.route('/api/auth/logout').get(authRoutes.logOut);
-router.route('/api/auth/readsessions').get(authRoutes.readSessions);
+router.route('/api/auth/readsession').get(authRoutes.readSessions);
 
 
 // User Routes

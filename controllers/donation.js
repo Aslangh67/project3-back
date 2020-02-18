@@ -29,7 +29,6 @@ module.exports = {
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
     });
-    res.json('task index route!')
   },
 
   // Get specific user profile item

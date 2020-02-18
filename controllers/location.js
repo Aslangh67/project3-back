@@ -35,7 +35,6 @@ module.exports = {
     }).then(function (dbInventory) {
       res.json(dbInventory);
     });
-    res.json('task index route!')
   },
 
   // Get specific location

@@ -33,7 +33,6 @@ module.exports = {
     }).then(function (dbCompany) {
       res.json(dbCompany);
     });
-    res.json('task index route!')
   },
 
   // Get specific company
