@@ -83,11 +83,11 @@ router.route('/api/donation/:id')
 // company Routes
 router.route('/api/company').get(companyRoutes.getCompanies);
 router.route('/api/company/new').post(companyRoutes.newCompany);
+router.route('/api/company/ein/:ein').get(companyRoutes.companyEin);
 router.route('/api/company/:id')
   .get(companyRoutes.getSingleCompany)
   .put(companyRoutes.editCompany)
   .delete(companyRoutes.deleteCompany)
-
 
 
 

@@ -1,10 +1,25 @@
 const express = require("express");
 // const sequelize, { Op } = require("sequelize")
 const router = express.Router();
+const axios = require("axios");
 // Import the models to use its database functions.
 const db = require("../models");
 
 module.exports = {
+//checking ein
+// api/company/ein
+
+companyEin: function({params},res){
+  console.log(parseInt(params.ein));
+  const einInput=parseInt(params.ein)
+  axios.get(`https://projects.propublica.org/nonprofits/api/v2/organizations/${einInput}.json`).then(response=>{
+
+console.log(response.data.organization);
+    res.json(response.data.organization)
+  }
+  )//.catch(err=>console.log(err))
+},
+
   // Create company item
   // api/company/new
   newCompany: function (req, res) {
