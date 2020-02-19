@@ -3,14 +3,13 @@
 // const router = express.Router();
 // Import the models to use its database functions.
 const db = require("../models");
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
 module.exports = {
   // Create user profile
   // api/user/new
   newUser: function (req, res) {
     console.log(req.body);
-    
     db.User_profile.create({
       username: req.body.username,
       password: req.body.password,

@@ -20,7 +20,7 @@ module.exports = {
             }
             else if (bcrypt.compareSync(req.body.password, dbUser.password)) {
                 //create new session property "user", set equal to logged in user
-                req.session.user = { username: dbUser.username, id: dbUser.id };
+                req.session.user = { username: dbUser.username, id: dbUser.id, companyId: dbUser.CompanyProfileId };
                 // save the user id to local storage
                 res.json({ loggedIn: true })
             }
@@ -40,6 +40,14 @@ module.exports = {
             res.send('successfully logged out')
 
         })
+    },
+    // api/auth/loggedinuser
+    verifyLogin: function (req, res) {
+        if(req.session.user){
+            res.json(req.session.user)
+          } else {
+            res.status(401).json("not logged in")
+          }
     },
 
     //developer route to see all the session variables.
