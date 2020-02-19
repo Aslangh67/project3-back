@@ -49,10 +49,10 @@ router.route('/api/inventory/:id')
 
 // Location Routes
 
-router.route('/api/location').get(locationRoutes.getLocations);
 
-router.route('/api/location/new').post(locationRoutes.newLocation);
 router.route('/api/location/').get(locationRoutes.getLocations);
+router.route('/api/location/new').post(locationRoutes.newLocation);
+router.route('/api/location/all/:city').get(locationRoutes.getLocations);
 router.route('/api/location/:id')
   .get(locationRoutes.getSingleLocation)
   .put(locationRoutes.editLocation)
@@ -82,6 +82,7 @@ router.route('/api/donation/:id')
 
 // company Routes
 router.route('/api/company').get(companyRoutes.getCompanies);
+router.route('/api/company/thisuser').get(companyRoutes.getCompanies);
 router.route('/api/company/new').post(companyRoutes.newCompany);
 router.route('/api/company/ein/:ein').get(companyRoutes.companyEin);
 router.route('/api/company/:id')

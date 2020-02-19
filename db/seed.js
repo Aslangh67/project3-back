@@ -41,7 +41,7 @@ db.Company_profile.bulkCreate([
         },
         {
             address: "1700 E Madison St",
-            city:" Seattle",
+            city:"Seattle",
             state:"WA",
             zip:98122 ,
             CompanyProfileId: 2

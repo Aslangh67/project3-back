@@ -29,9 +29,10 @@ module.exports = {
   // Get all location
   // api/location/
   getLocations: function (req, res) {
-    const query = {};
     db.Location.findAll({
-      where: query
+      where:{
+        city:req.params.city
+      },include:[db.Company_profile]
     }).then(function (dbInventory) {
       res.json(dbInventory);
     });
