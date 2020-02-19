@@ -61,6 +61,17 @@ console.log(response.data.organization);
       res.json(dbCompany);
     });
   },
+  // api/company/thisuser
+  getSessionCompany: function (req, res) {
+    db.Company_profile.findOne({
+      where: {
+        id: req.session.id
+      },
+      include:[db.Location]
+    }).then(function (dbCompany) {
+      res.json(dbCompany);
+    });
+  },
 
   // Edit company
   // api/company/:id

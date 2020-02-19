@@ -33,6 +33,7 @@ module.exports = {
     }).then(function (dbInventory) {
       res.json(dbInventory);
     });
+
   },
 
   // Get specific inventory item
@@ -48,7 +49,7 @@ module.exports = {
   },
 
   // Edit inventory item
-  // api/inventory/:id
+  // api/inventory/update
   editInventory: function (req, res) {
     db.Inventory.update(
       req.body, {
@@ -59,7 +60,7 @@ module.exports = {
       exp_date: req.body.exp_date,
       LocationId: req.body.LocationId,
       where: {
-        id: req.params.id,
+        id: req.body.id,
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);
