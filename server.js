@@ -6,9 +6,9 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
-//using express-session to enable session storage for our server
-var compression = require('compression')
-
+// var compression = require('compression');
+const cors = require("cors");
+const session = require("express-session");
 
 // Sets up the Express App
 // =============================================================
@@ -20,11 +20,11 @@ const url = "http://localhost:3000";
 // Deployed Front-end host un-comment
 // const url = "past heroku link here";
 
-// app.use(cors({
-//     origin: [url],
-//     credentials: true
-//   }));
-//   app.use(session({ secret: "something secret here", resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
+app.use(cors({
+    origin: [url],
+    credentials: true
+  }));
+  app.use(session({ secret: "something secret here", resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
 
 
   // Requiring our models for syncing
@@ -33,8 +33,6 @@ var db = require("./models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(compression());
-// app.use(compression({ filter: shouldCompress }));
 
 
 // Routes
@@ -46,7 +44,7 @@ app.use('/', allRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });

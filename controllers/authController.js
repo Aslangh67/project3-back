@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+// var express = require("express");
+// var router = express.Router();
 var db = require('../models');
 const bcrypt = require('bcryptjs');
 
@@ -43,7 +43,7 @@ module.exports = {
     },
 
     //developer route to see all the session variables.
-    // api/auth/readsessions
+    // api/auth/readsession
     readSessions: function (req, res) {
         res.json(req.session);
     }
