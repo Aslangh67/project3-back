@@ -43,9 +43,10 @@ router.route('/api/inventory').get(inventoryRoutes.getInventory);
 
 router.route('/api/inventory/new').post(inventoryRoutes.newInventory);
 router.route('/api/inventory/').get(inventoryRoutes.getInventory);
+router.route('/api/inventory/update').put(inventoryRoutes.editInventory);
 router.route('/api/inventory/:id')
   .get(inventoryRoutes.getSingleInventory)
-  .put(inventoryRoutes.editInventory)
+  // .put(inventoryRoutes.editInventory)
   .delete(inventoryRoutes.deleteInventory)
 
 // Location Routes
