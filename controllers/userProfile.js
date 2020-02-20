@@ -42,10 +42,10 @@ module.exports = {
   // Get specific user profile item
   // api/user/:id
   getSingleUser: function (req, res) {
-    db.User_profile.findOne({
+    db.Company_profile.findOne({
       where: {
         id: req.params.id
-      }
+      }, include: [db.Location,db.User_profile]
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
     }).catch(function (err) {
