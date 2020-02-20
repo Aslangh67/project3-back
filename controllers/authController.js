@@ -20,7 +20,9 @@ module.exports = {
             }
             else if (bcrypt.compareSync(req.body.password, dbUser.password)) {
                 //create new session property "user", set equal to logged in user
+
                 req.session.user = { email: dbUser.email, id: dbUser.id, CompanyProfileId: dbUser.CompanyProfileId };
+
                 // save the user id to local storage
                 res.json({ loggedIn: true, session: req.session })
                 console.log(req.session);
@@ -44,6 +46,14 @@ module.exports = {
             if (err) res.status(404).send(err);
             console.error(err);
         })
+    },
+    // api/auth/loggedinuser
+    verifyLogin: function (req, res) {
+        if(req.session.user){
+            res.json(req.session.user)
+          } else {
+            res.status(401).json("not logged in")
+          }
     },
 
     // api/auth/verifylogin
