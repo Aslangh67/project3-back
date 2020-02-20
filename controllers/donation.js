@@ -1,6 +1,3 @@
-const express = require("express");
-// const sequelize, { Op } = require("sequelize")
-const router = express.Router();
 // Import the models to use its database functions.
 const db = require("../models");
 
@@ -16,6 +13,7 @@ module.exports = {
         // return data
         res.json(data);
       }).catch(function (err) {
+        if (err) res.status(404).send(err);
         console.error(err);
       })
   },
@@ -28,6 +26,9 @@ module.exports = {
       where: query
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   },
 
@@ -40,6 +41,9 @@ module.exports = {
       }
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   },
 
@@ -48,13 +52,16 @@ module.exports = {
   editDonation: function (req, res) {
     db.Inventory_donated.update(
       req.body, {
-        CompanyProfileId: req.body.CompanyProfileId,
+      CompanyProfileId: req.body.CompanyProfileId,
       InventoryId: req.body.InventoryId,
       where: {
         id: req.params.id
       }
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   },
 
@@ -67,6 +74,9 @@ module.exports = {
       }
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   }
 }

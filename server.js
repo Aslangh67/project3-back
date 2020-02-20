@@ -24,7 +24,9 @@ app.use(cors({
     origin: [url],
     credentials: true
   }));
-  app.use(session({ secret: "something secret here", resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
+  app.use(session({ secret: "something secret here", resave: true, saveUninitialized: true,cookie:{maxAge: //7200000 
+    360000000
+} }));
 
 
   // Requiring our models for syncing
@@ -44,7 +46,7 @@ app.use('/', allRoutes);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });

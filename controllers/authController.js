@@ -1,7 +1,7 @@
-// var express = require("express");
-// var router = express.Router();
-var db = require('../models');
+// Npm packages
 const bcrypt = require('bcryptjs');
+// Import the models to use its database functions.
+var db = require('../models');
 
 
 module.exports = {
@@ -11,25 +11,28 @@ module.exports = {
     logIn: function (req, res) {
         db.User_profile.findOne({
             where: {
-                username: req.body.username
+                email: req.body.email
             }
         }).then(function (dbUser) {
             //compares password send in req.body to one in database, will return true if matched.
             if (!dbUser) {
-                res.json({ loggedIn: false })
+                res.send("email does not exist")
             }
             else if (bcrypt.compareSync(req.body.password, dbUser.password)) {
                 //create new session property "user", set equal to logged in user
-                req.session.user = { username: dbUser.username, id: dbUser.id, companyId: dbUser.CompanyProfileId };
+
+                req.session.user = { email: dbUser.email, id: dbUser.id, CompanyProfileId: dbUser.CompanyProfileId };
+
                 // save the user id to local storage
-                res.json({ loggedIn: true })
+                res.json({ loggedIn: true, session: req.session })
+                console.log(req.session);
             }
             else {
-                //delete existing user session, add error
-                req.session.user = false;
-                req.session.error = 'auth failed'
-                res.json({ loggedIn: false });
+                res.status(401).json("not logged in")
             }
+        }).catch(function (err) {
+            if (err) res.status(404).send(err);
+            console.error(err);
         })
     },
 
@@ -39,6 +42,9 @@ module.exports = {
         req.session.destroy(function () {
             res.send('successfully logged out')
 
+        }).catch(function (err) {
+            if (err) res.status(404).send(err);
+            console.error(err);
         })
     },
     // api/auth/loggedinuser
@@ -48,6 +54,17 @@ module.exports = {
           } else {
             res.status(401).json("not logged in")
           }
+    },
+
+    // api/auth/verifylogin
+    verifyLogin: function (req, res) {
+        //delete session user, logging you out
+        if (req.session.email) {
+            res.json(req.session.email)
+            // console.log(req.session.user);
+        } else {
+            res.status(401).json("Not logged in");
+        }
     },
 
     //developer route to see all the session variables.

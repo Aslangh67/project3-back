@@ -1,6 +1,3 @@
-const express = require("express");
-// const sequelize, { Op } = require("sequelize")
-const router = express.Router();
 // Import the models to use its database functions.
 const db = require("../models");
 
@@ -15,13 +12,13 @@ module.exports = {
       value_unit: req.body.value_unit,
       exp_date: req.body.exp_date,
       LocationId: req.body.LocationId
+    }).then(function (data) {
+      // return data
+      res.json(data);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     })
-      .then(function (data) {
-        // return data
-        res.json(data);
-      }).catch(function (err) {
-        console.error(err);
-      })
   },
 
   // Get all inventory item
@@ -31,8 +28,10 @@ module.exports = {
       where: {LocationId:req.params.id}
     }).then(function (dbInventory) {
       res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
-
   },
 
   // Get specific inventory item
@@ -44,6 +43,9 @@ module.exports = {
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   },
 
@@ -52,7 +54,7 @@ module.exports = {
   editInventory: function (req, res) {
     db.Inventory.update(
       req.body, {
-        title: req.body.title,
+      title: req.body.title,
       quantity: req.body.quantity,
       unit: req.body.unit,
       value_unit: req.body.value_unit,
@@ -63,6 +65,9 @@ module.exports = {
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   },
 
@@ -75,6 +80,9 @@ module.exports = {
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   }
 }
