@@ -59,9 +59,9 @@ module.exports = {
     // api/auth/verifylogin
     verifyLogin: function (req, res) {
         //delete session user, logging you out
-        if (req.session.email) {
-            res.json(req.session.email)
-            // console.log(req.session.user);
+        if (req.session.user) {
+            res.json(req.session.user)
+            console.log(req.session.user);
         } else {
             res.status(401).json("Not logged in");
         }
