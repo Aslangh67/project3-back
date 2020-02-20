@@ -24,7 +24,9 @@ app.use(cors({
     origin: [url],
     credentials: true
   }));
-  app.use(session({ secret: "something secret here", resave: true, saveUninitialized: true,cookie:{maxAge: 7200000} }));
+  app.use(session({ secret: "something secret here", resave: true, saveUninitialized: true,cookie:{maxAge: //7200000 
+    360000000
+} }));
 
 
   // Requiring our models for syncing

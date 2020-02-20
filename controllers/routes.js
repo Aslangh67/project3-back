@@ -15,6 +15,7 @@ const companyRoutes = require('./companyProfile.js');
 // Auth routes
 router.route('/api/auth/login').post(authRoutes.logIn);
 router.route('/api/auth/logout').get(authRoutes.logOut);
+router.route('/api/auth/verifylogin').get(authRoutes.verifyLogin);
 router.route('/api/auth/readsession').get(authRoutes.readSessions);
 
 

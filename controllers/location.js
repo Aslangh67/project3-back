@@ -1,6 +1,3 @@
-const express = require("express");
-// const sequelize, { Op } = require("sequelize")
-const router = express.Router();
 // Import the models to use its database functions.
 const db = require("../models");
 
@@ -22,6 +19,7 @@ module.exports = {
         // return data
         res.json(data);
       }).catch(function (err) {
+        if (err) res.status(404).send(err);
         console.error(err);
       })
   },
@@ -30,11 +28,14 @@ module.exports = {
   // api/location/
   getLocations: function (req, res) {
     db.Location.findAll({
-      where:{
-        city:req.params.city
-      },include:[db.Company_profile]
+      where: {
+        city: req.params.city
+      }, include: [db.Company_profile]
     }).then(function (dbInventory) {
       res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   },
 
@@ -47,6 +48,9 @@ module.exports = {
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   },
 
@@ -68,6 +72,9 @@ module.exports = {
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   },
 
@@ -80,6 +87,9 @@ module.exports = {
       }
     }).then(function (dbInventory) {
       res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
     });
   }
 }
