@@ -11,16 +11,16 @@ module.exports = {
     logIn: function (req, res) {
         db.User_profile.findOne({
             where: {
-                username: req.body.username
+                email: req.body.email
             }
         }).then(function (dbUser) {
             //compares password send in req.body to one in database, will return true if matched.
             if (!dbUser) {
-                res.send("Username does not exist")
+                res.send("email does not exist")
             }
             else if (bcrypt.compareSync(req.body.password, dbUser.password)) {
                 //create new session property "user", set equal to logged in user
-                req.session.user = { username: dbUser.username, id: dbUser.id, CompanyProfileId: dbUser.CompanyProfileId };
+                req.session.user = { email: dbUser.email, id: dbUser.id, CompanyProfileId: dbUser.CompanyProfileId };
                 // save the user id to local storage
                 res.json({ loggedIn: true, session: req.session })
                 console.log(req.session);
@@ -49,8 +49,8 @@ module.exports = {
     // api/auth/verifylogin
     verifyLogin: function (req, res) {
         //delete session user, logging you out
-        if (req.session.user) {
-            res.json(req.session.user)
+        if (req.session.email) {
+            res.json(req.session.email)
             // console.log(req.session.user);
         } else {
             res.status(401).json("Not logged in");
