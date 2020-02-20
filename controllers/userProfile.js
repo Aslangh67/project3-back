@@ -1,9 +1,6 @@
-// const express = require("express");
-// // const sequelize, { Op } = require("sequelize")
-// const router = express.Router();
 // Import the models to use its database functions.
 const db = require("../models");
-// const bcrypt = require('bcryptjs');
+
 
 module.exports = {
   // Create user profile
@@ -23,12 +20,7 @@ module.exports = {
         // return data
         res.json(data);
       }).catch(function (err) {
-        if (err) res.status(404).send(err);
-        // console.error(err);
-        res.json({
-          success: false,
-          message: error.message
-      })
+        if (err) res.status(400).send(err);
       })
   },
 
@@ -41,7 +33,10 @@ module.exports = {
       where: query
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
-    });
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
+  });
   },
 
   // Get specific user profile item
@@ -53,7 +48,10 @@ module.exports = {
       }
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
-    });
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
+  });
   },
 
   // Edit user profile
@@ -73,7 +71,10 @@ module.exports = {
       }
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
-    });
+    }).catch(function (err) {
+      if (err) res.status(400).send(err);
+      console.error(err);
+  });
   },
 
   // Delete user
@@ -85,7 +86,10 @@ module.exports = {
       }
     }).then(function (dbUser_profile) {
       res.json(dbUser_profile);
-    });
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
+  });
   }
 }
 
