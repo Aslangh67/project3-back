@@ -22,11 +22,10 @@ module.exports = {
   },
 
   // Get all inventory item
-  // api/inventory/
+  // api/inventory/all/:id
   getInventory: function (req, res) {
-    const query = {};
     db.Inventory.findAll({
-      where: query
+      where: {LocationId:req.params.id}
     }).then(function (dbInventory) {
       res.json(dbInventory);
     }).catch(function (err) {
