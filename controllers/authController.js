@@ -15,16 +15,12 @@ module.exports = {
             }
         }).then(function (dbUser) {
             //compares password send in req.body to one in database, will return true if matched.
-            if (!dbUser) {
-                res.send("email does not exist")
-            }
-            else if (bcrypt.compareSync(req.body.password, dbUser.password)) {
+            if (bcrypt.compareSync(req.body.password, dbUser.password)) {
                 //create new session property "user", set equal to logged in user
 
                 req.session.user = { email: dbUser.email, id: dbUser.id, CompanyProfileId: dbUser.CompanyProfileId };
 
-                // save the user id to local storage
-                res.json({ loggedIn: true, session: req.session })
+                res.json(req.session.user )
                 console.log(req.session);
             }
             else {
@@ -49,11 +45,11 @@ module.exports = {
     },
     // api/auth/loggedinuser
     verifyLogin: function (req, res) {
-        if(req.session.user){
+        if (req.session.user) {
             res.json(req.session.user)
-          } else {
+        } else {
             res.status(401).json("not logged in")
-          }
+        }
     },
 
     // api/auth/verifylogin
