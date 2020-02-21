@@ -12,6 +12,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+        Inventory.belongsTo(models.Company_profile, {
+          foreignKey: {
+            name: "charity_id"
+            
+          }
+        });
         Inventory.hasOne(models.Inventory_donated,{
           onDelete: "cascade"
         });

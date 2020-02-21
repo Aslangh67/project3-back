@@ -70,6 +70,19 @@ module.exports = {
       console.error(err);
     });
   },
+  // Edit inventory item bulk
+  // api/inventory/update/bulk
+  editInventory: function (req, res) {
+    console.log(req.body, typeof(req.body));
+    db.Inventory.bulkCreate(
+req.body.inventoryItem
+    , { updateOnDuplicate: ["charity_id"] }).then(function (dbInventory) {
+      res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
+    });
+  },
 
   // Delete inventory
   // api/inventory/:id
