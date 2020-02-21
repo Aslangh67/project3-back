@@ -12,14 +12,19 @@ module.exports = {
         db.User_profile.findOne({
             where: {
                 email: req.body.email
-            }
+            }, include: [db.Company_profile]
         }).then(function (dbUser) {
+            console.log(dbUser.dataValues);
+            
             //compares password send in req.body to one in database, will return true if matched.
             if (bcrypt.compareSync(req.body.password, dbUser.password)) {
                 //create new session property "user", set equal to logged in user
 
-                req.session.user = { email: dbUser.email, id: dbUser.id, CompanyProfileId: dbUser.CompanyProfileId };
-
+                req.session.user = { 
+                    email: dbUser.email, 
+                    id: dbUser.id, 
+                    CompanyProfileId: dbUser.CompanyProfileId,
+                    companyType: dbUser.Company_profile.dataValues.account_type };
                 res.json(req.session.user )
                 console.log(req.session);
             }
