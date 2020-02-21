@@ -18,6 +18,9 @@ module.exports = function(sequelize, DataTypes) {
       Company_profile.hasMany(models.Inventory_donated, {
         onDelete: "cascade"
       });
+      Company_profile.hasMany(models.Inventory, {
+        onDelete: "cascade"
+      });
  
     };
   
