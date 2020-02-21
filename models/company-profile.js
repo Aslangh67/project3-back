@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
     var Company_profile = sequelize.define("Company_profile", {
       company_name:{ type: DataTypes.STRING, allowNull: false},
       ein: { type: DataTypes.INTEGER, allowNull: false},
-      account_type:{ type: DataTypes.BOOLEAN, defaultValue:false},
+      account_type:{ type: DataTypes.STRING, allowNull: false},
     });
   
     Company_profile.associate = function(models) {

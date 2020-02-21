@@ -6,27 +6,27 @@ db.Company_profile.bulkCreate([
     {
         company_name: "Walmart",
         ein: 1,
-        account_type: true
+        account_type: "supplier"
     },
     {
         company_name: "Trader Joe's",
         ein: 2,
-        account_type: true
+        account_type: "supplier"
     },
     {
         company_name: "Fred Meyer",
         ein: 3,
-        account_type: true
+        account_type: "supplier"
     },
     {
         company_name: "The best soup kitchen",
         ein: 4,
-        account_type: false
+        account_type: "charity"
     },
     {
         company_name: "NSEW food bank",
         ein: 5,
-        account_type: false
+        account_type: "charity"
     }
 
 ]).then(function (dbcompanyprofile) {
