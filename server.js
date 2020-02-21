@@ -1,4 +1,3 @@
-//TODO: finish setting up my routes for dynamic so that as each web page is opened the webpage name is what that page is.
 
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
@@ -7,57 +6,42 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
-//using express-session to enable session storage for our server
-var compression = require('compression')
+// var compression = require('compression');
+const cors = require("cors");
+const session = require("express-session");
 
-var session = require("express-session");
-require('dotenv').config();
-console.log(process.env.SESSION_SECRET)
-
-var exphbs = require("express-handlebars");
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
-//imports entire controllers folder, we will handle moularization there
-var allRoutes = require('./routes/index');
 
-// Requiring our models for syncing
+// Development Front-end host comment out for deployment
+const url = "http://localhost:3000";
+// Deployed Front-end host un-comment
+// const url = "past heroku link here";
+
+app.use(cors({
+    origin: [url],
+    credentials: true
+  }));
+  app.use(session({ secret: "something secret here", resave: true, saveUninitialized: true,cookie:{maxAge: //7200000 
+    360000000
+} }));
+
+
+  // Requiring our models for syncing
 var db = require("./models");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(compression());
-// app.use(compression({ filter: shouldCompress }));
-// Set Handlebars as the default templating engine.
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
-// Static directory
-app.use(express.static("public"));
-
-var exphbs = require('express-handlebars');
-// Routes
-// =============================================================
-
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-//initializing sessions on our server, basically boilerplate
-
-app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true, cookie: { maxAge: 7200000 } }));
-
 
 
 // Routes
 // =============================================================
-const authRoutes = require('./controllers/api/authController');
-
-
-app.use("/auth", authRoutes);
+const allRoutes = require('./controllers/routes');
 
 app.use('/', allRoutes);
-
 
 
 // Syncing our sequelize models and then starting our Express app
