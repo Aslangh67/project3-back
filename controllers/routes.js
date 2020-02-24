@@ -24,6 +24,7 @@ router.route('/api/user').get(userRoutes.getUsers);
 
 router.route('/api/user/new').post(userRoutes.newUser);
 router.route('/api/user/').get(userRoutes.getUsers);
+router.route('/api/user/email/:email').get(userRoutes.checkUserEmail);
 router.route('/api/user/:id')
   .get(userRoutes.getSingleUser)
   .put(userRoutes.editUser)

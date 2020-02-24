@@ -39,6 +39,23 @@ module.exports = {
   });
   },
 
+  // Get all user profile
+  // api/user/email
+  checkUserEmail: function (req, res) {
+    console.log(req.params.email);
+    // console.log(req.params);
+    // console.log(req);
+    
+    db.User_profile.findOne({
+      where: {email: req.params.email}
+    }).then(function (res2) {
+      res.json(res2.email);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
+  });
+  },
+
   // Get specific user profile item
   // api/user/:id
   getSingleUser: function (req, res) {
@@ -53,7 +70,7 @@ module.exports = {
       console.error(err);
   });
   },
-
+  
   // Edit user profile
   // api/user/:id
   editUser: function (req, res) {
