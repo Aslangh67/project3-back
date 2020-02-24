@@ -25,7 +25,7 @@ module.exports = {
   // api/inventory/all/:id
   getInventory: function (req, res) {
     db.Inventory.findAll({
-      where: {LocationId:req.params.id}
+      where: {LocationId:req.params.id,charity_id:null}
     }).then(function (dbInventory) {
       res.json(dbInventory);
     }).catch(function (err) {
