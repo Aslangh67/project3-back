@@ -34,6 +34,19 @@ module.exports = {
     });
   },
 
+  // Get all inventory item
+  // api/inventory/charity/:id
+  getInventoryCharity: function (req, res) {
+    db.Inventory.findAll({
+      where: {charity_id:req.params.id}
+    }).then(function (dbInventory) {
+      res.json(dbInventory);
+    }).catch(function (err) {
+      if (err) res.status(404).send(err);
+      console.error(err);
+    });
+  },
+
   // Get specific inventory item
   // api/inventory/:id
   getSingleInventory: function (req, res) {
