@@ -18,7 +18,7 @@ var PORT = process.env.PORT || 8080;
 // Development Front-end host comment out for deployment
 // const url = "http://localhost:3000";
 // Deployed Front-end host un-comment
-const url = "https://food-savers-front.herokuapp.com/";
+const url = "https://food-savers-front.herokuapp.com";
 
 app.use(cors({
     origin: [url],
