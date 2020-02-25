@@ -42,6 +42,7 @@ router.route('/api/company/:id')
 
 router.route('/api/inventory/new').post(inventoryRoutes.newInventory);
 router.route('/api/inventory/').get(inventoryRoutes.getInventory);
+router.route('/api/inventory/charity/:id').get(inventoryRoutes.getInventoryCharity); // history of donations claimed
 router.route('/api/inventory/update').put(inventoryRoutes.editInventory);
 router.route('/api/inventory/update/bulk').put(inventoryRoutes.editInventory);
 router.route('/api/inventory/all/:id').get(inventoryRoutes.getInventory);
